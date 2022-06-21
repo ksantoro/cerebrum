@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExampleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/example', [ExampleController::class, 'index'])
+    ->name('example.index');
+
+Route::get('/example/{example}', [ExampleController::class, 'show'])
+    ->name('example.show');
+
+Route::post('/example', [ExampleController::class, 'create'])
+    ->name('example.create');
+
+Route::put('/example/{example}', [ExampleController::class, 'update'])
+    ->name('example.update');
+
+Route::get('/addnumbers', [ExampleController::class, 'addNumbers'])
+    ->name('example.addNumbers');
+
+Route::post('/addnumbers', [ExampleController::class, 'processNumbers'])
+    ->name('example.processNumbers');
